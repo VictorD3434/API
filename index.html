@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Maps</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div id="men">
+      <table>
+        <tr>
+          <td>
+            punto b
+            <input type="text" name="lati" placeholder="Latitud">
+            <input type="text" name="long" placeholder="Longitud">
+            <select id="tienda" onchange="">
+              <option value="0">Selecciona una tienda</option>
+            </select>
+            <input type="text" placeholder="Distancia en KM" id="kilo" readonly>
+            <input type="button" onclick="iniciarMap();" value="Ruta">
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="map">
+
+    </div>
+    <script src="script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYbwbfs6drkqIxCvll78pKb2eF7VDWdh4&libraries=geometry"></script>
+  </body>
+</html>

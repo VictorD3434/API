@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mapa static</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYbwbfs6drkqIxCvll78pKb2eF7VDWdh4&libraries=geometry"></script>
+
+  </head>
+  <body>
+    <div id="map">
+
+    </div>
+    <script type="text/javascript">
+      navigator.geolocation.getCurrentPosition(fn_ok, fn_mal);
+      var map = document.getElementById('map');
+      function fn_mal() { }
+      function fn_ok(respuesta) {
+        var lat = respuesta.coords.latitude;
+        var lon = respuesta.coords.longitude;
+
+        var glatlon = new google.maps.LatLng(lat, lon);
+        var objConfig = {
+          zoom: 17,
+          center: glatlon
+        };
+
+        var gMap = new google.maps.Map(map, objConfig);
+        var objConfigMarker = {
+          position: glatlon,
+          map: gMap,
+          title: "AQUI"
+        };
+        var gMarker = new google.maps.Marker(objConfigMarker);
+
+        var gCoder = new google.maps.Geocoder();
+        var objInfo = {
+          address: 'Autopista Toluca-Atlacomulco, San Joaquin KM 32, 50740 Ixtlahuaca de Rayón, Méx'
+        };
+        gCoder.geocode(objInfo, fn_coder);
+        function fn_coder(datos) {
+          var cord= datos[0].geometry.location;
+          var conf = {
+            map: gMap,
+            position: cord,
+            title: 'Bueno'
+          };
+          var gMarkerDV = new google.maps.Marker(conf);
+        }
+      }
+    </script>
+  </body>
+</html>
